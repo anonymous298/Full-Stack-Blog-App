@@ -13,12 +13,12 @@ const BlogsListing = () => {
     console.log(updatedData)
 
   return (
-    <div className="flex flex-col gap-5 items-center">
-      <div id="categorieButtons" className="flex font-semibold gap-5">
-        <button onClick={() => setCategoryState('All')} className={`${categoryState == 'All' ? 'bg-black transform scale-105 text-white' : ''} cursor-pointer p-2 px-3`}>All</button>
-        <button onClick={() => setCategoryState('Technology')} className={`${categoryState == 'Technology' ? 'bg-black transform scale-105 text-white' : ''} cursor-pointer p-2`}>Technology</button>
-        <button onClick={() => setCategoryState('Startup')} className={`${categoryState == 'Startup' ? 'bg-black transform scale-105 text-white' : ''} cursor-pointer p-2`}>Startup</button>
-        <button onClick={() => setCategoryState('Lifestyle')} className={`${categoryState == 'Lifestyle' ? 'bg-black transform scale-105 text-white' : ''} cursor-pointer p-2`}>Lifestyle</button>
+    <div className="flex flex-col gap-5 items-center mb-20 max-sm:gap-y-10">
+      <div id="categorieButtons" className="flex font-semibold gap-5 max-sm:gap-3">
+        <button onClick={() => setCategoryState('All')} className={`${categoryState == 'All' ? 'bg-black transform scale-105 text-white' : ''} cursor-pointer p-2 px-3 rounded-sm`}>All</button>
+        <button onClick={() => setCategoryState('Technology')} className={`${categoryState == 'Technology' ? 'bg-black transform scale-105 text-white' : ''} cursor-pointer p-2 rounded-sm`}>Technology</button>
+        <button onClick={() => setCategoryState('Startup')} className={`${categoryState == 'Startup' ? 'bg-black transform scale-105 text-white' : ''} cursor-pointer p-2 rounded-sm`}>Startup</button>
+        <button onClick={() => setCategoryState('Lifestyle')} className={`${categoryState == 'Lifestyle' ? 'bg-black transform scale-105 text-white' : ''} cursor-pointer p-2 rounded-sm`}>Lifestyle</button>
       </div>
 
       <div id="blogsContainer" className="flex flex-wrap gap-8 items-center justify-center">
