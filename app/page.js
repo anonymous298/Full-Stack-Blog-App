@@ -12,6 +12,7 @@ export default function Home() {
       {/* Main blog display component */}
       <BlogsHero />
 
+      {/* Footer Component */}
       <Footer />
     </div>
   );
