@@ -1,6 +1,7 @@
 "use client"
 
 import { blog_data } from '@/Assets/assets'
+import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
@@ -62,6 +63,8 @@ const Page = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
 
     </div>
   )
