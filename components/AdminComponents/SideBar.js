@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const SideBar = () => {
   return (
-    <div className='w-[25vw] bg-slate-100 border-2 h-screen'>
+    <div className='w-[26vw] bg-slate-100 border-2 min-h-screen'>
         <div id="sidebarLogo" className='p-3 flex justify-center items-center border-b-2'>
             <Image src={assets.logo} alt='logo' width={150} height={150} />
         </div>
