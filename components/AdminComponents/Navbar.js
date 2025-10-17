@@ -8,7 +8,7 @@ const Navbar = () => {
         <div className='w-[90%] flex justify-between items-center'>
             <h3 className='text-lg font-bold'>Admin Panel</h3>
 
-            <Image src={assets.profile_icon} alt='logo' width={50} height={50} />
+            <Image src={assets.author_img} alt='logo' width={50} height={50} />
         </div>
     </div>
   )
