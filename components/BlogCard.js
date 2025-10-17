@@ -4,7 +4,7 @@ import React from 'react'
 
 const BlogCard = ({id, title, description, image, category}) => {
   return (
-    <div className='min-h-[400px] w-[300px] border flex flex-col hover:shadow-[-7px_7px_0px_#000]'>
+    <div className='min-h-[400px] max-h-[400px] w-[300px] border flex flex-col hover:shadow-[-7px_7px_0px_#000]'>
         <Link href={`/blogs/${id}`} id='image' className=" h-[25vh] relative mb-5 border-b cursor-pointer">
             <Image
                 src={image}
