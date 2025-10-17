@@ -1,8 +1,9 @@
 "use client"
 
-import { blog_data } from '@/Assets/assets'
+// import { blog_data } from '@/Assets/assets'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
+import axios from 'axios'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
@@ -12,10 +13,22 @@ const Page = () => {
     const [currentData, setCurrentData] = useState({})
 
     useEffect(() => {
-      setCurrentData(blog_data.find((item) => item.id == id))
+      const getDataById = async () => {
+        const response = await axios.get('/api/blog', {
+          params : {
+            id : id
+          }
+        });
+        
+        setCurrentData(response.data.data)
+      }
+
+      getDataById();
+
+      // console.log(currentData)
     }, [id])
 
-    // console.log(currentData)
+    console.log(currentData)
 
   return (
     <div>
@@ -27,7 +40,10 @@ const Page = () => {
           <h1 className='font-bold text-4xl'>{currentData.title}</h1>
 
           <div id='author' className='flex flex-col items-center'>
-            {currentData.image && <Image src={currentData.author_img} alt='author' className='size-13 outline-2 outline-white rounded-full' />}
+            {currentData.authorimg ? (
+              <Image src={currentData.authorimg} alt='author' width={100} height={100} className='size-13 outline-2 outline-white rounded-full' />
+            ) : null}
+
             <p>{currentData.author}</p>
           </div>
           
@@ -36,7 +52,10 @@ const Page = () => {
       </div>
 
       <div id="blogImage" className='max-w-[700px] outline-3 outline-white mt-[-100px] mx-auto'>
-        {currentData.image && <Image src={currentData.image} alt='blog' width={1280} height={720} />}
+        {currentData.image ? (
+          <Image src={currentData.image} alt='blog' width={1280} height={720} />
+        ) : null}
+
       </div>
 
       <div id="blogdata" className='max-w-[700px] mx-auto'>
