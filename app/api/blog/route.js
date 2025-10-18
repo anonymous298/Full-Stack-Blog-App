@@ -1,16 +1,13 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/config/db";
-// import {  } from "fs/promises";
+import { writeFile } from "fs/promises";
 import BlogModel from "@/lib/models/BlogModel";
 import fs from 'fs'
 
-const loadDB = async () => {
-  await connectDB();
-};
-
-loadDB();
 
 export async function GET(request) {
+
+  await connectDB();
 
   const blogId = request.nextUrl.searchParams.get("id");
 
@@ -28,6 +25,8 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
+  await connectDB();
+
   const formData = await request.formData();
   const timestamp = Date.now();
 
@@ -63,6 +62,8 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
+  await connectDB();
+
   const {searchParams} = new URL(request.url)
   const id = searchParams.get("id");
 
