@@ -1,5 +1,7 @@
 import { Outfit, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const outfit = Outfit({
   variable: "--font-geist-sans",
@@ -23,6 +25,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${outfit.variable} ${geistMono.variable} antialiased`}
       >
+        <ToastContainer theme="dark" />
         {children}
       </body>
     </html>
