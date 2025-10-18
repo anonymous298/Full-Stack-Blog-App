@@ -6,9 +6,9 @@ import Link from 'next/link'
 const SideBar = () => {
   return (
     <div className='w-[26vw] bg-slate-100 border-2 min-h-screen'>
-        <div id="sidebarLogo" className='p-3 flex justify-center items-center border-b-2'>
+        <Link href={'/'} id="sidebarLogo" className='p-3 flex justify-center items-center border-b-2 cursor-pointer'>
             <Image src={assets.logo} alt='logo' width={150} height={150} />
-        </div>
+        </Link>
 
         <div id="adminButtons" className='flex flex-col items-end gap-y-6 mt-20'>
             <Link href={'/admin/addProduct'} className=' bg-white p-3 w-[85%] shadow-[-7px_7px_0px_#000] border flex gap-x-3 items-center cursor-pointer transform hover:scale-105'>
