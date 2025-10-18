@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/config/db";
-import { writeFile } from "fs/promises";
+// import {  } from "fs/promises";
 import BlogModel from "@/lib/models/BlogModel";
+import fs from 'fs'
 
 const loadDB = async () => {
   await connectDB();
@@ -10,8 +11,20 @@ const loadDB = async () => {
 loadDB();
 
 export async function GET(request) {
-    const data = await BlogModel.find({})
-  return NextResponse.json({ success: true, data : data });
+
+  const blogId = request.nextUrl.searchParams.get("id");
+
+  if (blogId) {
+    const data = await BlogModel.findById(blogId);
+
+    return NextResponse.json({success: true, data : data});
+  }
+  
+  else {
+
+    const data = await BlogModel.find({});
+    return NextResponse.json({ success: true, data: data });
+  }
 }
 
 export async function POST(request) {
@@ -40,11 +53,27 @@ export async function POST(request) {
     category: `${formData.get("category")}`,
     author: `${formData.get("author")}`,
     image: `${imgUrl}`,
-    authorimg: `${formData.get("authorImg")}`,
+    authorimg: `${formData.get("authorimg")}`,
   };
 
   await BlogModel.create(blogData);
   console.log("Blog Saved");
 
   return NextResponse.json({ success: true, msg: "Blog Added" });
+}
+
+export async function DELETE(request) {
+  const {searchParams} = new URL(request.url)
+  const id = searchParams.get("id");
+
+  try {
+    const blog = await BlogModel.findById(id)
+    fs.unlink(`./public${blog.image}`, () => {});
+    
+    await BlogModel.findByIdAndDelete(id);
+
+    return NextResponse.json({success : true, msg : "Blog Deleted..."})
+  }catch{
+    return NextResponse.json({success : false, msg : 'Error Deleting Blog...'})
+  }
 }
